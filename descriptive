@@ -1,0 +1,41 @@
+dir.create("results", showWarnings = FALSE)
+
+data <- read.csv("data/mtcars.csv")
+
+mpg <- data$mpg
+
+mean_mpg <- mean(mpg)
+median_mpg <- median(mpg)
+
+get_mode <- function(x) {
+  ux <- unique(x)
+  ux[which.max(tabulate(match(x, ux)))]
+}
+mode_mpg <- get_mode(mpg)
+
+sd_mpg <- sd(mpg)
+range_mpg <- range(mpg)
+quartile_mpg <- quantile(mpg)
+
+mean_mpg
+median_mpg
+mode_mpg
+sd_mpg
+range_mpg
+quartile_mpg
+
+# Histogram
+png("results/histogram_mpg.png")
+hist(mpg,
+     col = "skyblue",
+     main = "Histogram MPG",
+     xlab = "Miles Per Gallon")
+dev.off()
+
+# Boxplot
+png("results/boxplot_mpg.png")
+boxplot(mpg,
+        horizontal = TRUE,
+        col = "orange",
+        main = "Boxplot MPG")
+dev.off()
