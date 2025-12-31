@@ -1,0 +1,17 @@
+# ANALISIS KORELASI
+
+# Baca data
+data <- read.csv("data/mtcars.csv")
+
+# Korelasi Pearson
+cor.test(data$hp, data$mpg, method = "pearson")
+
+# Scatter plot
+png("results/scatter_correlation.png")
+plot(data$hp, data$mpg,
+     main = "Scatter Plot Horsepower vs MPG",
+     xlab = "Horsepower",
+     ylab = "MPG",
+     pch = 19,
+     col = "blue")
+dev.off()
